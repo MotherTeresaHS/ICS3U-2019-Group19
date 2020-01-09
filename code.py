@@ -237,9 +237,9 @@ def help_scene():
 
 def selection_scene():
     # this function is the air plane selection scene
-    image_bank_1 = stage.Bank.from_bmp16("avoid_shoot.bmp")
+    image_bank_3 = stage.Bank.from_bmp16("avoid_shoot.bmp")
 
-    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
+    background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
 
     for x_location in range(constants.SCREEN_GRID_X):
@@ -257,27 +257,27 @@ def selection_scene():
 
     sprites = []
 
-    plane1 = stage.Sprite(image_bank_1, 6, int(constants.SCREEN_X / 4),
+    plane1 = stage.Sprite(image_bank_3, 6, int(constants.SCREEN_X / 4),
                         int(constants.SCREEN_Y / 4))
     sprites.append(plane1)
 
-    plane2 = stage.Sprite(image_bank_1, 7, int(constants.SCREEN_X / 4),
+    plane2 = stage.Sprite(image_bank_3, 7, int(constants.SCREEN_X / 4),
                         int(constants.SCREEN_Y * 3 / 4))
     sprites.append(plane2)
 
-    plane3 = stage.Sprite(image_bank_1, 8, int(constants.SCREEN_X * 3 / 4),
+    plane3 = stage.Sprite(image_bank_3, 8, int(constants.SCREEN_X * 3 / 4),
                         int(constants.SCREEN_Y / 4))
     sprites.append(plane3)
 
-    plane4 = stage.Sprite(image_bank_1, 9, int(constants.SCREEN_X * 3 / 4),
+    plane4 = stage.Sprite(image_bank_3, 8, int(constants.SCREEN_X * 3 / 4),
                         int(constants.SCREEN_Y * 3 / 4))
     sprites.append(plane4)
 
     select_box = []
 
-    select_box1 = stage.Sprite(image_bank_1, 13, int(constants.SCREEN_X / 4),
+    select_box1 = stage.Sprite(image_bank_3, 9, int(constants.SCREEN_X / 4),
                         int(constants.SCREEN_Y / 4))
-    sprites.append(select_box1)
+    select_box.append(select_box1)
 
     game = stage.Stage(ugame.display, constants.FPS)
     game.layers = select_box + sprites + text + [background]
@@ -288,47 +288,51 @@ def selection_scene():
         keys = ugame.buttons.get_pressed()
 
         if keys & ugame.K_UP != 0:
-            if select_box1.y = constants.SCREEN_Y / 4:
-                pass
+            if select_box1.y != constants.SCREEN_Y / 4:
+                select_box1.move(int(select_box1.x), int(constants.SCREEN_Y / 4))
             else:
-                select_box1.move(select_box1.x, constants.SCREEN_Y / 4)
+                pass
             pass
         if keys & ugame.K_DOWN != 0:
-            if select_box1.y = constants.SCREEN_Y * 3 / 4:
-                pass
+            if select_box1.y != constants.SCREEN_Y * 3 / 4:
+                select_box1.move(int(select_box1.x), int(constants.SCREEN_Y * 3 / 4))
             else:
-                select_box1.move(select_box1.x, constants.SCREEN_Y * 3 / 4)
+                pass
             pass
         if keys & ugame.K_LEFT != 0:
-            if select_box1.x = constants.SCREEN_X * 3 / 4:
-                pass
+            if select_box1.x != constants.SCREEN_X / 4:
+                select_box1.move(int(constants.SCREEN_X / 4), int(select_box1.y))
             else:
-                select_box1.move(constants.SCREEN_X * 3 / 4, select_box1.y)
+                pass
             pass
         if keys & ugame.K_RIGHT != 0:
-            if select_box1.x = constants.SCREEN_X / 4:
-                pass
+            if select_box1.x != constants.SCREEN_X * 3 / 4:
+                select_box1.move(int(constants.SCREEN_X * 3 / 4), int(select_box1.y))
             else:
-                select_box1.move(constants.SCREEN_X / 4, select_box1.y)
+                pass
             pass
         if keys & ugame.K_SELECT != 0:
-            if select_box1.x = plane1.x and select_box1.y = plane1.y:
+            if select_box1.x == plane1.x and select_box1.y == plane1.y:
                 plane_info = 1
-            elif select_box1.x = plane2.x and select_box1.y = plane2.y:
+            elif select_box1.x == plane2.x and select_box1.y == plane2.y:
                 plane_info = 2
-            elif select_box1.x = plane3.x and select_box1.y = plane3.y:
+            elif select_box1.x == plane3.x and select_box1.y == plane3.y:
                 plane_info = 3
-            elif select_box1.x = plane4.x and select_box1.y = plane4.y:
+            else:
                 plane_info = 4
-        if keys & ugame.K_START != 0:
             game_scene(plane_info)
 
+        game.render_sprites(select_box + sprites)
         game.tick()
 
 
 def game_scene(plane):
     # this function is the game scene
-    # this function is the game scene
+    image_bank_3 = stage.Bank.from_bmp16("avoid_shoot.bmp")
+
+    background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
+                            constants.SCREEN_GRID_Y)
+
 
     # repeat forever, game loop
     while True:
@@ -354,4 +358,4 @@ def game_over_scene(final_score):
 
 
 if __name__ == "__main__":
-    blank_white_reset_scene()
+    selection_scene()
