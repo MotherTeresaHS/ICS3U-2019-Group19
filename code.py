@@ -14,6 +14,8 @@ import random
 
 import constants
 
+sound = 0
+
 
 def blank_white_reset_scene():
     # this function is the splash scene game loop
@@ -54,10 +56,10 @@ def mt_splash_scene():
     # this function is the MT splash scene
 
     # an image bank for CircuitPython
-    image_bank_2 = stage.Bank.from_bmp16("mt_game_studio.bmp")
+    image_bank_1 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
     # sets the background to image 0 in the bank
-    background = stage.Grid(image_bank_2, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
+    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
 
     # used this program to split the iamge into tile: https://ezgif.com/sprite-cutter/ezgif-5-818cdbcc3f66.png
     background.tile(2, 2, 0)  # blank white
@@ -120,10 +122,10 @@ def mt_splash_scene():
 
 
 def main_menu_scene():
-    image_bank_3 = stage.Bank.from_bmp16("avoid_title.bmp")
+    image_bank_2 = stage.Bank.from_bmp16("avoid_title.bmp")
 
     # sets the background to image 0 in the bank
-    background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
+    background = stage.Grid(image_bank_2, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
 
     # used this program to split the iamge into tile:
@@ -179,9 +181,9 @@ def main_menu_scene():
 
 
 def help_scene():
-    image_bank_2 = stage.Bank.from_bmp16("mt_game_studio.bmp")
+    image_bank_1 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
-    background = stage.Grid(image_bank_2, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
+    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
 
     text = []
     text1 = stage.Text(width=29, height=14, font=None,
@@ -192,19 +194,19 @@ def help_scene():
 
     text2 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
-    text2.move(35, 30)
+    text2.move(20, 30)
     text2.text("Use D-Pad to fly")
     text.append(text2)
 
     text3 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
-    text3.move(35, 40)
+    text3.move(40, 40)
     text3.text("SHOOT [A]")
     text.append(text3)
 
     text4 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
-    text4.move(35, 70)
+    text4.move(40, 70)
     text4.text("SOUND [B]")
     text.append(text4)
 
@@ -216,7 +218,7 @@ def help_scene():
 
     text6 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
-    text6.move(35, 100)
+    text6.move(25, 100)
     text6.text("CREATED BY JAY")
     text.append(text6)
 
@@ -228,7 +230,7 @@ def help_scene():
         keys = ugame.buttons.get_pressed()
 
         if keys & ugame.K_START != 0:
-            main_menu_scene()
+            selection_scene()
 
         game.tick()
 
@@ -259,23 +261,73 @@ def selection_scene():
                         int(constants.SCREEN_Y / 4))
     sprites.append(plane1)
 
+    plane2 = stage.Sprite(image_bank_1, 7, int(constants.SCREEN_X / 4),
+                        int(constants.SCREEN_Y * 3 / 4))
+    sprites.append(plane2)
+
+    plane3 = stage.Sprite(image_bank_1, 8, int(constants.SCREEN_X * 3 / 4),
+                        int(constants.SCREEN_Y / 4))
+    sprites.append(plane3)
+
+    plane4 = stage.Sprite(image_bank_1, 9, int(constants.SCREEN_X * 3 / 4),
+                        int(constants.SCREEN_Y * 3 / 4))
+    sprites.append(plane4)
+
+    select_box = []
+
+    select_box1 = stage.Sprite(image_bank_1, 13, int(constants.SCREEN_X / 4),
+                        int(constants.SCREEN_Y / 4))
+    sprites.append(select_box1)
+
     game = stage.Stage(ugame.display, constants.FPS)
-    game.layers = sprites + text + [background]
+    game.layers = select_box + sprites + text + [background]
     game.render_block()
 
     time.sleep(1.0)
     while True:
         keys = ugame.buttons.get_pressed()
 
+        if keys & ugame.K_UP != 0:
+            if select_box1.y = constants.SCREEN_Y / 4:
+                pass
+            else:
+                select_box1.move(select_box1.x, constants.SCREEN_Y / 4)
+            pass
+        if keys & ugame.K_DOWN != 0:
+            if select_box1.y = constants.SCREEN_Y * 3 / 4:
+                pass
+            else:
+                select_box1.move(select_box1.x, constants.SCREEN_Y * 3 / 4)
+            pass
+        if keys & ugame.K_LEFT != 0:
+            if select_box1.x = constants.SCREEN_X * 3 / 4:
+                pass
+            else:
+                select_box1.move(constants.SCREEN_X * 3 / 4, select_box1.y)
+            pass
+        if keys & ugame.K_RIGHT != 0:
+            if select_box1.x = constants.SCREEN_X / 4:
+                pass
+            else:
+                select_box1.move(constants.SCREEN_X / 4, select_box1.y)
+            pass
         if keys & ugame.K_SELECT != 0:
-            print("here")
-        elif keys & ugame.K_START != 0:
+            if select_box1.x = plane1.x and select_box1.y = plane1.y:
+                plane_info = 1
+            elif select_box1.x = plane2.x and select_box1.y = plane2.y:
+                plane_info = 2
+            elif select_box1.x = plane3.x and select_box1.y = plane3.y:
+                plane_info = 3
+            elif select_box1.x = plane4.x and select_box1.y = plane4.y:
+                plane_info = 4
+        if keys & ugame.K_START != 0:
             game_scene(plane_info)
 
         game.tick()
 
 
-def game_scene():
+def game_scene(plane):
+    # this function is the game scene
     # this function is the game scene
 
     # repeat forever, game loop
