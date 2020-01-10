@@ -15,6 +15,7 @@ import random
 import constants
 
 sound = 0
+score = 0
 
 
 def blank_white_reset_scene():
@@ -269,13 +270,13 @@ def selection_scene():
                         int(constants.SCREEN_Y / 4))
     sprites.append(plane3)
 
-    plane4 = stage.Sprite(image_bank_3, 8, int(constants.SCREEN_X * 3 / 4),
+    plane4 = stage.Sprite(image_bank_3, 9, int(constants.SCREEN_X * 3 / 4),
                         int(constants.SCREEN_Y * 3 / 4))
     sprites.append(plane4)
 
     select_box = []
 
-    select_box1 = stage.Sprite(image_bank_3, 9, int(constants.SCREEN_X / 4),
+    select_box1 = stage.Sprite(image_bank_3, 14, int(constants.SCREEN_X / 4),
                         int(constants.SCREEN_Y / 4))
     select_box.append(select_box1)
 
@@ -313,13 +314,13 @@ def selection_scene():
             pass
         if keys & ugame.K_SELECT != 0:
             if select_box1.x == plane1.x and select_box1.y == plane1.y:
-                plane_info = 1
+                plane_info = 6
             elif select_box1.x == plane2.x and select_box1.y == plane2.y:
-                plane_info = 2
+                plane_info = 7
             elif select_box1.x == plane3.x and select_box1.y == plane3.y:
-                plane_info = 3
+                plane_info = 8
             else:
-                plane_info = 4
+                plane_info = 9
             game_scene(plane_info)
 
         game.render_sprites(select_box + sprites)
@@ -328,17 +329,100 @@ def selection_scene():
 
 def game_scene(plane):
     # this function is the game scene
+    
+    global score
+    
     image_bank_3 = stage.Bank.from_bmp16("avoid_shoot.bmp")
 
     background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
 
+    text = []
+
+    score_text = stage.Text(width=29, height=14, font=None,
+                            palette=constants.SCORE_PALETTE, buffer=None)
+    score_text.clear()
+    score_text.cursor(0, 0)
+    score_text.move(1, 1)
+    score_text.text("Score: {0}".format(score))
+    text.append(score_text)
+    
+    missile_text = stage.Text(width=29, height=14, font=None,
+                       palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+    missile_text.clear()
+    missile_text.cursor(0, 0)
+    missile_text.move(0, 10)
+    missile_text.text("Missile {0}".format(missile_number))
+    text.append(missile_text)
+    
+    sprites = []
+    
+    plane = stage.Sprite(image_bank_1, int(plane), int(constants.SCREEN_X / 2),
+                        int(constants.SCREEN_Y -
+                        constants.SPRITE_SIZE))
+    sprites.append(plane)
+    
+    missiles = []
+    
+    for missile_number in range(constants.TOTAL_NUMBER_OF_MISSILES):
+        missile = stage.Sprite(image_bank_1, 13, constants.OFF_SCREEN_X,
+                               constants.OFF_SCREEN_Y)
+        missiles.append(missile)
+
+    birds = []
+
+    bird = stage.Sprite(image_bank_1, 5, constants.OFF_SCREEN_X,
+                        constants.OFF_SCREEN_Y)
+    birds.append(bird)
+    
+    enemies = []
+
+    enemy = stage.Sprite(image_bank_1, 10, constants.OFF_SCREEN_X,
+                        constants.OFF_SCREEN_Y)
+    enemies.append(enemy)
+
 
     # repeat forever, game loop
     while True:
         # get user input
+        keys = ugame.buttons.get_pressed()
+
+        # print(keys)
+        if keys & ugame.K_X != 0:
+            if a_button == constants.button_state["button_up"]:
+                a_button = constants.button_state["button_just_pressed"]
+            elif a_button == constants.button_state["button_just_pressed"]:
+                a_button = constants.button_state["button_still_pressed"]
+        else:
+            if a_button == constants.button_state["button_still_pressed"]:
+                a_button = constants.button_state["button_released"]
+            else:
+                a_button = constants.button_state["button_up"]
+        
+        if keys & ugame.K_UP != 0:
+            if plane.y < 0:
+                plane.move(plane.x, 0)
+            else:
+                plane.move(plane.x, plane.y - 1)
+            pass
+        if keys & ugame.K_DOWN != 0:
+            if plane.y > constants.SCREEN_Y - constants.SCREEN_GRID_Y:
+                plane.move(plane.x, constants.SCREEN_Y - constants.SPRITE_SIZE)
+            else:
+                plane.move(plane.x, plane.y + 1)
+            pass
 
         # update game logic
+        if a_button == constants.button_state["button_just_pressed"]:
+            sound.play(pew_sound)
+        
+        if a_button == constants.button_state["button_just_pressed"]:
+            for missile_number in range(len(lasers)):
+                if missiles[missile_number].x < 0:
+                    missiles[missile_number].move(plane.x, plane.y)
+                    sound.stop()
+                    sound.play(pew_sound)
+                    break
 
         # redraw sprite list
         pass # just a placeholder until you write the code
