@@ -8,7 +8,6 @@
 import ugame
 import stage
 import board
-import neopixel
 import time
 import random
 
@@ -238,7 +237,7 @@ def help_scene():
 
 def selection_scene():
     # this function is the air plane selection scene
-    image_bank_3 = stage.Bank.from_bmp16("avoid_shoot.bmp")
+    image_bank_3 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
 
     background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
@@ -276,7 +275,7 @@ def selection_scene():
 
     select_box = []
 
-    select_box1 = stage.Sprite(image_bank_3, 14, int(constants.SCREEN_X / 4),
+    select_box1 = stage.Sprite(image_bank_3, 13, int(constants.SCREEN_X / 4),
                         int(constants.SCREEN_Y / 4))
     select_box.append(select_box1)
 
@@ -332,10 +331,15 @@ def game_scene(plane):
     
     global score
     
-    image_bank_3 = stage.Bank.from_bmp16("avoid_shoot.bmp")
+    image_bank_3 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
 
     background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
+
+    for y_location in range(constants.SCREEN_GRID_Y):
+        for x_location in range(constants.SCREEN_GRID_X):
+            tile_picked = random.randint(1, 3)
+            background.tile(x_location, y_location, tile_picked)
 
     text = []
 
@@ -352,12 +356,12 @@ def game_scene(plane):
     missile_text.clear()
     missile_text.cursor(0, 0)
     missile_text.move(0, 10)
-    missile_text.text("Missile {0}".format(missile_number))
+    missile_text.text("Missile {0}".format(constants.TOTAL_NUMBER_OF_MISSILES))
     text.append(missile_text)
     
     sprites = []
     
-    plane = stage.Sprite(image_bank_1, int(plane), int(constants.SCREEN_X / 2),
+    plane = stage.Sprite(image_bank_3, int(plane), int(constants.SCREEN_X / 2),
                         int(constants.SCREEN_Y -
                         constants.SPRITE_SIZE))
     sprites.append(plane)
@@ -365,21 +369,28 @@ def game_scene(plane):
     missiles = []
     
     for missile_number in range(constants.TOTAL_NUMBER_OF_MISSILES):
-        missile = stage.Sprite(image_bank_1, 13, constants.OFF_SCREEN_X,
+        missile = stage.Sprite(image_bank_3, 13, constants.OFF_SCREEN_X,
                                constants.OFF_SCREEN_Y)
         missiles.append(missile)
 
     birds = []
 
-    bird = stage.Sprite(image_bank_1, 5, constants.OFF_SCREEN_X,
+    bird = stage.Sprite(image_bank_3, 5, constants.OFF_SCREEN_X,
                         constants.OFF_SCREEN_Y)
     birds.append(bird)
     
     enemies = []
 
-    enemy = stage.Sprite(image_bank_1, 10, constants.OFF_SCREEN_X,
+    enemy = stage.Sprite(image_bank_3, 10, constants.OFF_SCREEN_X,
                         constants.OFF_SCREEN_Y)
     enemies.append(enemy)
+    
+    game = stage.Stage(ugame.display, constants.FPS)
+    # set the background layer
+    game.layers = sprites + text + enemies + birds + [background]
+    # render the background
+    # most likely you will only render background once per scene
+    game.render_block()
 
 
     # repeat forever, game loop
@@ -398,7 +409,7 @@ def game_scene(plane):
                 a_button = constants.button_state["button_released"]
             else:
                 a_button = constants.button_state["button_up"]
-        
+
         if keys & ugame.K_UP != 0:
             if plane.y < 0:
                 plane.move(plane.x, 0)
@@ -414,18 +425,14 @@ def game_scene(plane):
 
         # update game logic
         if a_button == constants.button_state["button_just_pressed"]:
-            sound.play(pew_sound)
-        
-        if a_button == constants.button_state["button_just_pressed"]:
-            for missile_number in range(len(lasers)):
+            for missile_number in range(len(missiles)):
                 if missiles[missile_number].x < 0:
                     missiles[missile_number].move(plane.x, plane.y)
-                    sound.stop()
-                    sound.play(pew_sound)
                     break
 
         # redraw sprite list
-        pass # just a placeholder until you write the code
+        game.render_sprites(sprites + missiles + birds)
+        game.tick()
 
 
 def game_over_scene(final_score):
@@ -442,4 +449,4 @@ def game_over_scene(final_score):
 
 
 if __name__ == "__main__":
-    selection_scene()
+    game_scene(10)
