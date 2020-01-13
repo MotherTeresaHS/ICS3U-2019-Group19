@@ -55,7 +55,7 @@ Although this code does work just as is, it is always nice to ensure we are foll
 
 	#!/usr/bin/env python3
 
-	# Created by : Mr. Coxall
+	# Created by : Jay Lee
 	# Created on : January 2020
 	# This program prints out Hello, World! onto the PyBadge
 
