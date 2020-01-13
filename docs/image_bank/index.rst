@@ -9,7 +9,7 @@ Before we can start coding a video game, we need to have the artwork and other a
     :align: center
     :alt: Image Bank for Avoid or Shoot
 
-    Image Bank for Space Aliens
+    Image Bank for Avoid or Shoot
 
 For sound, the stage library can play back :file:`*.wav` files in PCM 16-bit Mono Wave files at 22KHz sample rate. Adafruit has a great learning guide on how to save your sound files to the correct format `here <https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino/convert-files>`_.
 
