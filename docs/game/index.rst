@@ -7,10 +7,8 @@ Game
 X
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :glob:
 
    Background <background>
-   Space Ship <space_ship>
-   Space Ship <space_ship>
    Space Ship <space_ship>
