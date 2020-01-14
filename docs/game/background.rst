@@ -10,17 +10,17 @@ Avoid or Shoot needs a background. This code is puts the first image in the back
 
 	image_bank_1 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
 
-   background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
-                           constants.SCREEN_GRID_Y)
+   	background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
+                           	constants.SCREEN_GRID_Y)
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
 .. figure:: ./hello_world.png
    :width: 480 px
-   :alt: Hello, World!
+   :alt: White background
    :align: center
 
-   Hello, World! program on PyBadge
+   Background on PyBadge
 
 Although this code does work just as is, it is always nice to ensure we are following proper coding conventions, including style and comments. Here is a better version of Hello, World! You will notice that I have a call to a :py:func:`main()` function. This is common in Python code but not normally seen in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
 
