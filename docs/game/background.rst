@@ -53,6 +53,10 @@ Although this code does work just as is, it is always nice to ensure we are foll
 	    # most likely you will only render background once per scene
 	    game.render_block()
 
+	    # repeat forever, game loop
+	    while true:
+	    	pass
+
 
 	if __name__ == "__main__":
 	    main()
