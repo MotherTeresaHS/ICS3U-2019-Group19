@@ -13,9 +13,10 @@ Avoid or Shoot needs a background. This code is puts the first image in the back
    	background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
                            	constants.SCREEN_GRID_Y)
 
+
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
-.. figure:: ./hello_world.png
+.. figure:: ./docs/game/images/white_background.png
    :width: 480 px
    :alt: White background
    :align: center
