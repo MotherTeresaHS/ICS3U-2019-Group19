@@ -293,11 +293,11 @@ def selection_scene():
     text1.text("PLANE SELECTION")
     text.append(text1)
 
-    text1 = stage.Text(width=29, height=14, font=None,
+    text2 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
-    text1.move(15, 100)
-    text1.text("SELECT:GAME START")
-    text.append(text1)
+    text2.move(15, 100)
+    text2.text("SELECT:GAME START")
+    text.append(text2)
 
     sprites = []
 
@@ -340,9 +340,11 @@ def selection_scene():
                 pass
             pass
         if keys & ugame.K_DOWN != 0:
-            if select_box1.y != constants.SCREEN_Y * 3 / 4:
+            if select_box1.y != (constants.SCREEN_Y * 3 / 4 -
+                                 constants.SPRITE_SIZE):
                 select_box1.move(int(select_box1.x),
-                                 int(constants.SCREEN_Y * 3 / 4))
+                                 int(constants.SCREEN_Y * 3 / 4 -
+                                     constants.SPRITE_SIZE))
             else:
                 pass
             pass
@@ -354,8 +356,10 @@ def selection_scene():
                 pass
             pass
         if keys & ugame.K_RIGHT != 0:
-            if select_box1.x != constants.SCREEN_X * 3 / 4:
-                select_box1.move(int(constants.SCREEN_X * 3 / 4),
+            if select_box1.x != (constants.SCREEN_X * 3 / 4 -
+                                 constants.SPRITE_SIZE):
+                select_box1.move(int(constants.SCREEN_X * 3 / 4 -
+                                     constants.SPRITE_SIZE),
                                  int(select_box1.y))
             else:
                 pass
