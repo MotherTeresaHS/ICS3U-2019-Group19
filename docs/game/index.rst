@@ -11,4 +11,5 @@ X
    :glob:
 
    Background <background>
-   Air Plane <air_plane>
+   Show Airplane <airplane>
+   Move Airplane <move_airplane>
