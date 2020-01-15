@@ -1,6 +1,6 @@
 .. _space_ship:
 
-Show Air plane
+Show Airplane
 ==========
 
 sprites can be placed in front of the background. xxx
