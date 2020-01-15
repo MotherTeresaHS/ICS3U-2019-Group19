@@ -54,7 +54,7 @@ This code will not work. The code above has a lot to do. Here is a better versio
 	    game.render_block()
 
 	    # repeat forever, game loop
-	    while true:
+	    while True:
 	    	pass
 
 
