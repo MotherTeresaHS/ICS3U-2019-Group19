@@ -51,16 +51,18 @@ def blank_white_reset_scene():
 
 def mt_splash_scene():
     # this function is the MT splash scene
-    
+
     global volume
 
     # an image bank for CircuitPython
     image_bank_1 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
     # sets the background to image 0 in the bank
-    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
+    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
+                            constants.SCREEN_GRID_Y)
 
-    # used this program to split the iamge into tile: https://ezgif.com/sprite-cutter/ezgif-5-818cdbcc3f66.png
+    # used this program to split the iamge into tile:
+    #   https://ezgif.com/sprite-cutter/ezgif-5-818cdbcc3f66.png
     background.tile(2, 2, 0)  # blank white
     background.tile(3, 2, 1)
     background.tile(4, 2, 2)
@@ -91,14 +93,16 @@ def mt_splash_scene():
 
     text = []
 
-    text1 = stage.Text(width=29, height=14, font=None, palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+    text1 = stage.Text(width=29, height=14, font=None,
+                       palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text1.move(20, 10)
     text1.text("MT Game Studios")
     text.append(text1)
 
     # get sound ready
-    # follow this guide to convert your other sounds to something that will work
-    #    https://learn.adafruit.com/microcontroller-compatible-audio-file-conversion
+    # follow this guide to convert your other sounds to something
+    #   that will work https://learn.adafruit.com/microcontroller-
+    #       compatible-audio-file-conversion
     coin_sound = open("coin.wav", 'rb')
     sound = ugame.audio
     sound.stop()
@@ -184,16 +188,17 @@ def main_menu_scene():
 
 def help_scene():
     # this function is the help scene
-    
+
     global volume
-    
+
     b_button = constants.button_state["button_up"]
     start_button = constants.button_state["button_up"]
     select_button = constants.button_state["button_up"]
-    
+
     image_bank_1 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
-    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
+    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
+                            constants.SCREEN_GRID_Y)
 
     text = []
     text1 = stage.Text(width=29, height=14, font=None,
@@ -262,9 +267,9 @@ def help_scene():
 
 def selection_scene():
     # this function is the air plane selection scene
-    
+
     global volume
-    
+
     image_bank_3 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
 
     background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
@@ -272,14 +277,14 @@ def selection_scene():
 
     for x_location in range(constants.SCREEN_GRID_X):
         for y_location in range(constants.SCREEN_GRID_Y):
-            tile_picked = random.randint(1, 1)
+            tile_picked = 1
             background.tile(x_location, y_location, tile_picked)
 
     coin_sound = open("coin.wav", 'rb')
     sound = ugame.audio
     sound.stop()
     sound.mute(False)
-    
+
     text = []
 
     text1 = stage.Text(width=29, height=14, font=None,
@@ -288,28 +293,36 @@ def selection_scene():
     text1.text("PLANE SELECTION")
     text.append(text1)
 
+    text1 = stage.Text(width=29, height=14, font=None,
+                       palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+    text1.move(15, 100)
+    text1.text("SELECT:GAME START")
+    text.append(text1)
+
     sprites = []
 
     plane1 = stage.Sprite(image_bank_3, 6, int(constants.SCREEN_X / 4),
-                        int(constants.SCREEN_Y / 4))
+                          int(constants.SCREEN_Y / 4))
     sprites.append(plane1)
 
     plane2 = stage.Sprite(image_bank_3, 7, int(constants.SCREEN_X / 4),
-                        int(constants.SCREEN_Y * 3 / 4))
+                          int(constants.SCREEN_Y * 3 / 4 -
+                              constants.SPRITE_SIZE))
     sprites.append(plane2)
 
-    plane3 = stage.Sprite(image_bank_3, 8, int(constants.SCREEN_X * 3 / 4),
-                        int(constants.SCREEN_Y / 4))
+    plane3 = stage.Sprite(image_bank_3, 8, int(constants.SCREEN_X * 3 / 4 -
+                          constants.SPRITE_SIZE), int(constants.SCREEN_Y / 4))
     sprites.append(plane3)
 
-    plane4 = stage.Sprite(image_bank_3, 9, int(constants.SCREEN_X * 3 / 4),
-                        int(constants.SCREEN_Y * 3 / 4))
+    plane4 = stage.Sprite(image_bank_3, 9, int(constants.SCREEN_X * 3 / 4 -
+                          constants.SPRITE_SIZE), int(constants.SCREEN_Y * 3 /
+                          4 - constants.SPRITE_SIZE))
     sprites.append(plane4)
 
     select_box = []
 
     select_box1 = stage.Sprite(image_bank_3, 13, int(constants.SCREEN_X / 4),
-                        int(constants.SCREEN_Y / 4))
+                               int(constants.SCREEN_Y / 4))
     select_box.append(select_box1)
 
     game = stage.Stage(ugame.display, constants.FPS)
@@ -321,25 +334,29 @@ def selection_scene():
 
         if keys & ugame.K_UP != 0:
             if select_box1.y != constants.SCREEN_Y / 4:
-                select_box1.move(int(select_box1.x), int(constants.SCREEN_Y / 4))
+                select_box1.move(int(select_box1.x),
+                                 int(constants.SCREEN_Y / 4))
             else:
                 pass
             pass
         if keys & ugame.K_DOWN != 0:
             if select_box1.y != constants.SCREEN_Y * 3 / 4:
-                select_box1.move(int(select_box1.x), int(constants.SCREEN_Y * 3 / 4))
+                select_box1.move(int(select_box1.x),
+                                 int(constants.SCREEN_Y * 3 / 4))
             else:
                 pass
             pass
         if keys & ugame.K_LEFT != 0:
             if select_box1.x != constants.SCREEN_X / 4:
-                select_box1.move(int(constants.SCREEN_X / 4), int(select_box1.y))
+                select_box1.move(int(constants.SCREEN_X / 4),
+                                 int(select_box1.y))
             else:
                 pass
             pass
         if keys & ugame.K_RIGHT != 0:
             if select_box1.x != constants.SCREEN_X * 3 / 4:
-                select_box1.move(int(constants.SCREEN_X * 3 / 4), int(select_box1.y))
+                select_box1.move(int(constants.SCREEN_X * 3 / 4),
+                                 int(select_box1.y))
             else:
                 pass
             pass
@@ -385,21 +402,21 @@ def game_scene(plane):
                 tile_picked = random.randint(1, 1)
             background.tile(x_location, y_location, tile_picked)
 
-    birds_sound = open("birds.wav", 'rb')
+    birds_sound = open("bird.wav", 'rb')
     sound = ugame.audio
     sound.stop()
     sound.mute(False)
 
-    bomb_sound = open("Bomb.wav", 'rb')
+    bomb_sound = open("boom.wav", 'rb')
     sound = ugame.audio
     sound.stop()
     sound.mute(False)
-    
+
     shot_sound = open("pew.wav", 'rb')
     sound = ugame.audio
     sound.stop()
     sound.mute(False)
-    
+
     coin_sound = open("coin.wav", 'rb')
     sound = ugame.audio
     sound.stop()
@@ -409,12 +426,14 @@ def game_scene(plane):
         enemy_picked = random.randint(0, 1)
         if enemy_picked == 0:
             if bird.y < 0:
-                bird.move(160, random.randint(0 + constants.SPRITE_SIZE,
-                                          constants.SCREEN_Y - constants.SPRITE_SIZE))
+                bird.move(180, random.randint(0 + constants.SPRITE_SIZE,
+                                              constants.SCREEN_Y -
+                                              constants.SPRITE_SIZE))
         else:
             if enemy.y < 0:
-                enemy.move(160, random.randint(0 + constants.SPRITE_SIZE,
-                                          constants.SCREEN_Y - constants.SPRITE_SIZE))
+                enemy.move(180, random.randint(0 + constants.SPRITE_SIZE,
+                                               constants.SCREEN_Y -
+                                               constants.SPRITE_SIZE))
 
     def show_missile():
         if loaded_missile. y < 0:
@@ -433,7 +452,7 @@ def game_scene(plane):
     text.append(score_text)
 
     missile_text = stage.Text(width=29, height=14, font=None,
-                       palette=constants.SCORE_PALETTE, buffer=None)
+                              palette=constants.SCORE_PALETTE, buffer=None)
     missile_text.clear()
     missile_text.cursor(0, 0)
     missile_text.move(1, 10)
@@ -443,7 +462,7 @@ def game_scene(plane):
     sprites = []
 
     plane = stage.Sprite(image_bank_3, int(plane), 2,
-                        int(constants.SCREEN_Y / 2))
+                         int(constants.SCREEN_Y / 2))
     sprites.append(plane)
 
     missiles = []
@@ -462,12 +481,12 @@ def game_scene(plane):
     enemies = []
 
     enemy = stage.Sprite(image_bank_3, 10, constants.OFF_SCREEN_X,
-                        constants.OFF_SCREEN_Y)
+                         constants.OFF_SCREEN_Y)
     enemies.append(enemy)
 
     loaded_missiles = []
     loaded_missile = stage.Sprite(image_bank_3, 11, constants.OFF_SCREEN_X,
-                        constants.OFF_SCREEN_Y)
+                                  constants.OFF_SCREEN_Y)
     loaded_missiles.append(loaded_missile)
 
     show_flying()
@@ -475,11 +494,11 @@ def game_scene(plane):
 
     game = stage.Stage(ugame.display, constants.FPS)
     # set the background layer
-    game.layers = text + sprites + enemies + birds + missiles + loaded_missiles + [background]
+    game.layers = (text + sprites + enemies + birds + missiles +
+                   loaded_missiles + [background])
     # render the background
     # most likely you will only render background once per scene
     game.render_block()
-
 
     # repeat forever, game loop
     while True:
@@ -520,7 +539,8 @@ def game_scene(plane):
                         missile_text.clear()
                         missile_text.cursor(0, 0)
                         missile_text.move(1, 10)
-                        missile_text.text("Missile:{0}".format(number_of_missiles))
+                        missile_text.text("Missile:{0}"
+                                          .format(number_of_missiles))
                         game.render_block()
                         if volume % 2 == 0:
                             sound.stop()
@@ -530,10 +550,12 @@ def game_scene(plane):
         # missiles move to right
         for missile_number in range(len(missiles)):
             if missiles[missile_number].y > 0:
-                missiles[missile_number].move(missiles[missile_number].x + constants.MISSLE_SPEED,
+                missiles[missile_number].move(missiles[missile_number].x +
+                                              constants.MISSLE_SPEED,
                                               missiles[missile_number].y)
                 if missiles[missile_number].x > constants.SCREEN_X:
-                    missiles[missile_number].move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                    missiles[missile_number].move(constants.OFF_SCREEN_X,
+                                                  constants.OFF_SCREEN_Y)
 
         # flying move left
         if bird.y > 0:
@@ -566,7 +588,8 @@ def game_scene(plane):
         if loaded_missile.y > 0:
             loaded_missile.move(loaded_missile.x - 1, loaded_missile.y)
             if loaded_missile.x < constants.OFF_SCREEN_X:
-                loaded_missile.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                loaded_missile.move(constants.OFF_SCREEN_X,
+                                    constants.OFF_SCREEN_Y)
                 show_missile()
 
         # if the missile hit the flying thing
@@ -579,7 +602,8 @@ def game_scene(plane):
                                      missiles[missile_number].y + 16,
                                      bird.x, bird.y, bird.x + 16, bird.y + 16):
                         # you hit an bird
-                        bird.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                        bird.move(constants.OFF_SCREEN_X,
+                                  constants.OFF_SCREEN_Y)
                         missiles[missile_number].move(constants.OFF_SCREEN_X,
                                                       constants.OFF_SCREEN_Y)
                         show_flying()
@@ -602,13 +626,15 @@ def game_scene(plane):
                                      missiles[missile_number].y,
                                      missiles[missile_number].x + 16,
                                      missiles[missile_number].y + 16,
-                                     enemy.x, enemy.y, enemy.x + 16, enemy.y + 16):
+                                     enemy.x, enemy.y, enemy.x + 16,
+                                     enemy.y + 16):
                         # missile hit an plane
-                        enemy.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                        enemy.move(constants.OFF_SCREEN_X,
+                                   constants.OFF_SCREEN_Y)
                         missiles[missile_number].move(constants.OFF_SCREEN_X,
                                                       constants.OFF_SCREEN_Y)
                         show_flying()
-                        score += 3
+                        score += 2
                         score_text.clear()
                         score_text.cursor(0, 0)
                         score_text.move(1, 1)
@@ -624,7 +650,9 @@ def game_scene(plane):
                 if volume % 2 == 0:
                     sound.stop()
                     sound.play(bomb_sound)
-                time.sleep(4.0)
+                    time.sleep(2.0)
+                else:
+                    time.sleep(0.5)
                 cause = 0
                 game_over_scene(score, cause)
         elif enemy.x > 0:
@@ -633,7 +661,10 @@ def game_scene(plane):
                 if volume % 2 == 0:
                     sound.stop()
                     sound.play(bomb_sound)
-                time.sleep(4.0)
+                    time.sleep(4.0)
+                else:
+                    time.sleep(0.5)
+
                 cause = 1
                 game_over_scene(score, cause)
 
@@ -641,7 +672,7 @@ def game_scene(plane):
             if stage.collide(loaded_missile.x + 1, loaded_missile.y,
                              loaded_missile.x + 15, loaded_missile.y + 15,
                              plane.x, plane.y, plane.x + 15, plane.y + 15):
-                number_of_missiles += 5
+                number_of_missiles += 3
                 missile_text.clear()
                 missile_text.cursor(0, 0)
                 missile_text.move(1, 10)
@@ -650,58 +681,62 @@ def game_scene(plane):
                 if volume % 2 == 0:
                     sound.stop()
                     sound.play(coin_sound)
-                loaded_missile.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                loaded_missile.move(constants.OFF_SCREEN_X,
+                                    constants.OFF_SCREEN_Y)
                 show_missile()
 
         # redraw sprite list
-        game.render_sprites(sprites + birds + enemies + missiles + loaded_missiles)
+        game.render_sprites(sprites + birds + enemies + missiles +
+                            loaded_missiles)
         game.tick()
 
 
 def game_over_scene(final_score, cause):
     # this function is the game over scene
-    
+
     global score
     global number_of_missiles
-    
+
     image_bank_3 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
 
     background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
-    
+
     text = []
-    
+
     text1 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text1.move(45, 30)
     text1.text("GAME OVER")
     text.append(text1)
-    
+
     text2 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text2.move(50, 50)
     text2.text("Score:{0}".format(final_score))
     text.append(text2)
-    
+
     if cause == 0:
         text3 = stage.Text(width=29, height=14, font=None,
-                           palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+                           palette=constants.MT_GAME_STUDIO_PALETTE,
+                           buffer=None)
         text3.move(12, 80)
         text3.text("YOU HIT THE BIRD!")
         text.append(text3)
     else:
         text3 = stage.Text(width=29, height=14, font=None,
-                           palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+                           palette=constants.MT_GAME_STUDIO_PALETTE,
+                           buffer=None)
         text3.move(10, 80)
         text3.text("YOU HIT THE PLANE!")
         text.append(text3)
-    
+
     text4 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text4.move(40, 100)
     text4.text("MENU:[A]")
     text.append(text4)
-    
+
     game = stage.Stage(ugame.display, constants.FPS)
     # set the background layer
     game.layers = text + [background]
@@ -718,7 +753,6 @@ def game_over_scene(final_score, cause):
             score = 0
             number_of_missiles = 10
             main_menu_scene()
-            
 
         game.tick()
 
