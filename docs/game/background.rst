@@ -3,7 +3,7 @@
 Background
 ==========
 
-Avoid or Shoot needs a background. This code is puts the first image in the background. The first image is 16 x 16 px image at the top. in this case the first image is white colour image. Of course when you save the file, save it as :file:`code.py` file:
+Avoid or Shoot needs a background. This code is puts the first image in the background. The first image is 16 x 16 px image at the top. in this case the first image of image bank is white colour image. Of course when you save the file, save it as :file:`code.py` file:
 
 .. code-block:: python
 	:linenos:
@@ -22,7 +22,7 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
    Background on PyBadge
 
-Although this code does work just as is, it is always nice to ensure we are following proper coding conventions, including style and comments. Here is a better version of Hello, World! You will notice that I have a call to a :py:func:`main()` function. This is common in Python code but not normally seen in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
+This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
 
 
 .. code-block:: python
@@ -31,7 +31,7 @@ Although this code does work just as is, it is always nice to ensure we are foll
 	#!/usr/bin/env python3
 
 	# Created by : Jay Lee
-	# Created on : January 2020
+	# Created on : Jan 2020
 	# This program display background of pybadge
 	
 	import ugame
@@ -62,4 +62,4 @@ Although this code does work just as is, it is always nice to ensure we are foll
 	    main()
     
 
-Congratulations, we are ready to start.
+This is the basis of the background function.
