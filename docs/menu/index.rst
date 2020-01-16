@@ -10,6 +10,6 @@ X
    :maxdepth: 1
    :glob:
 
-   Start Scene <start_scene>
    Splash Scene <splash_scene>
+   Start Scene <start_scene>
    Game Over Scene <game_over_scene>
