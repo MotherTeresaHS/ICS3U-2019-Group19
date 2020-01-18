@@ -195,9 +195,9 @@ def help_scene():
     start_button = constants.button_state["button_up"]
     select_button = constants.button_state["button_up"]
 
-    image_bank_1 = stage.Bank.from_bmp16("mt_game_studio.bmp")
+    image_bank_3 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
 
-    background = stage.Grid(image_bank_1, constants.SCREEN_GRID_X,
+    background = stage.Grid(image_bank_3, constants.SCREEN_GRID_X,
                             constants.SCREEN_GRID_Y)
 
     text = []
@@ -221,7 +221,7 @@ def help_scene():
 
     text4 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
-    text4.move(40, 70)
+    text4.move(20, 70)
     text4.text("SOUND [B]")
     text.append(text4)
 
@@ -237,8 +237,18 @@ def help_scene():
     text6.text("CREATED BY JAY")
     text.append(text6)
 
+    box = []
+
+    check_box = stage.Sprite(image_bank_3, 4, 130, 60)
+    box.append(check_box)
+
+    border = []
+
+    box_border = stage.Sprite(image_bank_3, 13, 130, 60)
+    border.append(box_border)
+
     game = stage.Stage(ugame.display, constants.FPS)
-    game.layers = text + [background]
+    game.layers = text + border + box + [background]
     game.render_block()
 
     while True:
@@ -258,10 +268,15 @@ def help_scene():
         if b_button == constants.button_state["button_just_pressed"]:
             if keys & ugame.K_O != 0:
                 volume += 1
+        if volume % 2 == 1:
+            check_box.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+        else:
+            check_box.move(130, 60)
 
         if keys & ugame.K_START != 0:
             selection_scene()
 
+        game.render_sprites(box)
         game.tick()
 
 
@@ -484,13 +499,9 @@ def game_scene(plane_number):
 
     enemies = []
 
-    for enemy_number in range(constants.TOTAL_NUMBER_OF_ENEMIES)
-        if enemy_number + 6 == plane_number:
-            pass
-        else:
-            enemy = stage.Sprite(image_bank_3, int(enemy_number + 6), constants.OFF_SCREEN_X,
-                                 constants.OFF_SCREEN_Y)
-            enemies.append(enemy)
+    enemy = stage.Sprite(image_bank_3, 10, constants.OFF_SCREEN_X,
+                         constants.OFF_SCREEN_Y)
+    enemies.append(enemy)
 
     loaded_missiles = []
     loaded_missile = stage.Sprite(image_bank_3, 11, constants.OFF_SCREEN_X,
