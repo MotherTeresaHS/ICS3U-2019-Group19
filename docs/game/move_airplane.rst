@@ -30,7 +30,7 @@ sprites can be placed in front of the background. xxx
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
-.. figure:: ./images/move_plane.gif
+.. figure:: ./images/move_plane.GIF
    :width: 480 px
    :alt: Move plane
    :align: center
