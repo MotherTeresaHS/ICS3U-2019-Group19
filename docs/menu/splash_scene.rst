@@ -8,7 +8,7 @@ in this case the first image of image bank is white colour image. Of course when
 
 We use another image bank. 
 
-.. figure:: ./images/mt_game_studio.bmp
+.. figure:: https://raw.githubusercontent.com/jaeyoon-lee2/ICS3U-2019-Group19/master/mt_game_studio.bmp
    :width: 480 px
    :alt: mt_game_studio.bmp
    :align: center
