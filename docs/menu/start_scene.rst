@@ -69,14 +69,14 @@ This code will not work. The code above has a lot to do. Here is a better versio
 
 .. code-block:: python
 	:linenos:
-  while True:
-      keys = ugame.buttons.get_pressed()
+        while True:
+            keys = ugame.buttons.get_pressed()
 
-      if keys & ugame.K_START != 0:
-          selection_scene()
-      elif keys & ugame.K_SELECT != 0:
-          help_scene()
+            if keys & ugame.K_START != 0:
+                selection_scene()
+            elif keys & ugame.K_SELECT != 0:
+                help_scene()
 
-      game.tick()
+            game.tick()
 
 Switch scenes with start and select
