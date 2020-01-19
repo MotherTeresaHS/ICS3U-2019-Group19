@@ -18,38 +18,38 @@ We use another image bank
 .. code-block:: python
 	:linenos:
 
-	    image_bank_2 = stage.Bank.from_bmp16("mt_game_studio.bmp")
+	image_bank_2 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
-            # sets the background to image 0 in the bank
-            background = stage.Grid(image_bank_2, 10, 8)
-    
-            background.tile(2, 2, 0)  # blank white
-            background.tile(3, 2, 1)
-            background.tile(4, 2, 2)
-            background.tile(5, 2, 3)
-            background.tile(6, 2, 4)
-            background.tile(7, 2, 0)  # blank white
+	# sets the background to image 0 in the bank
+	background = stage.Grid(image_bank_2, 10, 8)
 
-            background.tile(2, 3, 0)  # blank white
-            background.tile(3, 3, 5)
-            background.tile(4, 3, 6)
-            background.tile(5, 3, 7)
-            background.tile(6, 3, 8)
-            background.tile(7, 3, 0)  # blank white
+	background.tile(2, 2, 0)  # blank white
+	background.tile(3, 2, 1)
+	background.tile(4, 2, 2)
+	background.tile(5, 2, 3)
+	background.tile(6, 2, 4)
+	background.tile(7, 2, 0)  # blank white
 
-            background.tile(2, 4, 0)  # blank white
-            background.tile(3, 4, 9)
-            background.tile(4, 4, 10)
-            background.tile(5, 4, 11)
-            background.tile(6, 4, 12)
-            background.tile(7, 4, 0)  # blank white
+	background.tile(2, 3, 0)  # blank white
+	background.tile(3, 3, 5)
+	background.tile(4, 3, 6)
+	background.tile(5, 3, 7)
+	background.tile(6, 3, 8)
+	background.tile(7, 3, 0)  # blank white
 
-            background.tile(2, 5, 0)  # blank white
-            background.tile(3, 5, 0)
-            background.tile(4, 5, 13)
-            background.tile(5, 5, 14)
-            background.tile(6, 5, 0)
-            background.tile(7, 5, 0)  # blank white
+	background.tile(2, 4, 0)  # blank white
+	background.tile(3, 4, 9)
+	background.tile(4, 4, 10)
+	background.tile(5, 4, 11)
+	background.tile(6, 4, 12)
+	background.tile(7, 4, 0)  # blank white
+
+	background.tile(2, 5, 0)  # blank white
+	background.tile(3, 5, 0)
+	background.tile(4, 5, 13)
+	background.tile(5, 5, 14)
+	background.tile(6, 5, 0)
+	background.tile(7, 5, 0)  # blank white
 
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
