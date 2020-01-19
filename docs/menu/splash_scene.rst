@@ -6,7 +6,7 @@ Splash Scene
 Avoid or Shoot needs a background. This code is puts the first image in the background. The first image is 16 x 16 px image at the top. 
 in this case the first image of image bank is white colour image. Of course when you save the file, save it as :file:`code.py` file:
 
-We use another image bank
+We use another image bank. 
 
 .. figure:: ./images/mt_game_studio.bmp
    :width: 480 px
