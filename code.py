@@ -563,152 +563,68 @@ def game_scene(plane_number):
                     missiles[missile_number].move(constants.OFF_SCREEN_X,
                                                   constants.OFF_SCREEN_Y)
 
-        if score <= 10:
-            # move user's plane with d-pad
-            if keys & ugame.K_UP != 0:
-                if plane.y < 0:
-                    plane.move(plane.x, 0)
-                else:
-                    plane.move(plane.x, plane.y - 2)
-                pass
-            if keys & ugame.K_DOWN != 0:
-                if plane.y > constants.SCREEN_Y - constants.SPRITE_SIZE:
-                    plane.move(plane.x, constants.SCREEN_Y - constants.SPRITE_SIZE)
-                else:
-                    plane.move(plane.x, plane.y + 2)
-                pass
+        # move user's plane with d-pad
+        if keys & ugame.K_UP != 0:
+            if plane.y < 0:
+                plane.move(plane.x, 0)
+            else:
+                plane.move(plane.x, plane.y - 2)
+            pass
+        if keys & ugame.K_DOWN != 0:
+            if plane.y > constants.SCREEN_Y - constants.SPRITE_SIZE:
+                plane.move(plane.x, constants.SCREEN_Y - constants.SPRITE_SIZE)
+            else:
+                plane.move(plane.x, plane.y + 2)
+            pass
 
-            # flying move left
-            if bird.y > 0:
+        # flying move left
+        if bird.y > 0:
+            # level
+            if score <= 10:
                 bird.move(bird.x - constants.BIRD_LEVEL_1, bird.y)
-                if bird.x < constants.OFF_SCREEN_X:
-                    bird.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
-                    show_flying()
-                    score += 1
-                    score_text.clear()
-                    score_text.cursor(0, 0)
-                    score_text.move(1, 1)
-                    score_text.text("Score:{0}".format(score))
-                    game.render_block()
-            elif enemy.y > 0:
-                enemy.move(enemy.x - constants.ENEMY_LEVEL_1, enemy.y)
-                if enemy.x < constants.OFF_SCREEN_X:
-                    enemy.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
-                    show_flying()
-                    if score > 1:
-                        score -= 2
-                    elif score == 1:
-                        score -= 1
-                    score_text.clear()
-                    score_text.cursor(0, 0)
-                    score_text.move(1, 1)
-                    score_text.text("Score:{0}".format(score))
-                    game.render_block()
-
-            # loaded missile move left
-            if loaded_missile.y > 0:
-                loaded_missile.move(loaded_missile.x - 1, loaded_missile.y)
-                if loaded_missile.x < constants.OFF_SCREEN_X:
-                    loaded_missile.move(constants.OFF_SCREEN_X,
-                                        constants.OFF_SCREEN_Y)
-                    show_missile()
-        elif score <= 30 and score > 10:
-            if keys & ugame.K_UP != 0:
-                if plane.y < 0:
-                    plane.move(plane.x, 0)
-                else:
-                    plane.move(plane.x, plane.y - 2)
-                pass
-            if keys & ugame.K_DOWN != 0:
-                if plane.y > constants.SCREEN_Y - constants.SCREEN_GRID_Y:
-                    plane.move(plane.x, constants.SCREEN_Y - constants.SPRITE_SIZE)
-                else:
-                    plane.move(plane.x, plane.y + 2)
-                pass
-
-            # flying move left
-            if bird.y > 0:
+            elif score > 10 and score <= 30:
                 bird.move(bird.x - constants.BIRD_LEVEL_2, bird.y)
-                if bird.x < constants.OFF_SCREEN_X:
-                    bird.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
-                    show_flying()
-                    score += 1
-                    score_text.clear()
-                    score_text.cursor(0, 0)
-                    score_text.move(1, 1)
-                    score_text.text("Score:{0}".format(score))
-                    game.render_block()
-            elif enemy.y > 0:
-                enemy.move(enemy.x - constants.ENEMY_LEVEL_2, enemy.y)
-                if enemy.x < constants.OFF_SCREEN_X:
-                    enemy.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
-                    show_flying()
-                    if score > 1:
-                        score -= 2
-                    elif score == 1:
-                        score -= 1
-                    score_text.clear()
-                    score_text.cursor(0, 0)
-                    score_text.move(1, 1)
-                    score_text.text("Score:{0}".format(score))
-                    game.render_block()
-
-            # loaded missile move left
-            if loaded_missile.y > 0:
-                loaded_missile.move(loaded_missile.x - 1, loaded_missile.y)
-                if loaded_missile.x < constants.OFF_SCREEN_X:
-                    loaded_missile.move(constants.OFF_SCREEN_X,
-                                        constants.OFF_SCREEN_Y)
-                    show_missile()
-
-        elif score > 30:
-            if keys & ugame.K_UP != 0:
-                if plane.y < 0:
-                    plane.move(plane.x, 0)
-                else:
-                    plane.move(plane.x, plane.y - 2)
-                pass
-            if keys & ugame.K_DOWN != 0:
-                if plane.y > constants.SCREEN_Y - constants.SCREEN_GRID_Y:
-                    plane.move(plane.x, constants.SCREEN_Y - constants.SPRITE_SIZE)
-                else:
-                    plane.move(plane.x, plane.y + 2)
-                pass
-
-            # flying move left
-            if bird.y > 0:
+            else:
                 bird.move(bird.x - constants.BIRD_LEVEL_3, bird.y)
-                if bird.x < constants.OFF_SCREEN_X:
-                    bird.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
-                    show_flying()
-                    score += 1
-                    score_text.clear()
-                    score_text.cursor(0, 0)
-                    score_text.move(1, 1)
-                    score_text.text("Score:{0}".format(score))
-                    game.render_block()
-            elif enemy.y > 0:
-                enemy.move(enemy.x - constants.ENEMY_LEVEL_3, enemy.y)
-                if enemy.x < constants.OFF_SCREEN_X:
-                    enemy.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
-                    show_flying()
-                    if score > 1:
-                        score -= 2
-                    elif score == 1:
-                        score -= 1
-                    score_text.clear()
-                    score_text.cursor(0, 0)
-                    score_text.move(1, 1)
-                    score_text.text("Score:{0}".format(score))
-                    game.render_block()
 
-            # loaded missile move left
-            if loaded_missile.y > 0:
-                loaded_missile.move(loaded_missile.x - 1, loaded_missile.y)
-                if loaded_missile.x < constants.OFF_SCREEN_X:
-                    loaded_missile.move(constants.OFF_SCREEN_X,
-                                        constants.OFF_SCREEN_Y)
-                    show_missile()
+            if bird.x < constants.OFF_SCREEN_X:
+                bird.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                show_flying()
+                score += 1
+                score_text.clear()
+                score_text.cursor(0, 0)
+                score_text.move(1, 1)
+                score_text.text("Score:{0}".format(score))
+                game.render_block()
+        elif enemy.y > 0:
+            # level
+            if score <= 10:
+                enemy.move(enemy.x - constants.ENEMY_LEVEL_1, enemy.y)
+            elif score > 10 and score <= 30:
+                enemy.move(enemy.x - constants.ENEMY_LEVEL_2, enemy.y)
+            else:
+                enemy.move(enemy.x - constants.ENEMY_LEVEL_3, enemy.y)
+
+            if enemy.x < constants.OFF_SCREEN_X:
+                enemy.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                show_flying()
+                if score > 1:
+                    score -= 2
+                elif score == 1:
+                    score -= 1
+                score_text.clear()
+                score_text.cursor(0, 0)
+                score_text.move(1, 1)
+                score_text.text("Score:{0}".format(score))
+                game.render_block()
+
+        # loaded missile move left
+        if loaded_missile.y > 0:
+            loaded_missile.move(loaded_missile.x - 1, loaded_missile.y)
+            if loaded_missile.x < constants.OFF_SCREEN_X:
+                loaded_missile.move(constants.OFF_SCREEN_X,
+                                    constants.OFF_SCREEN_Y)
+                show_missile()
 
         # if the missile hit the flying thing
         for missile_number in range(len(missiles)):
