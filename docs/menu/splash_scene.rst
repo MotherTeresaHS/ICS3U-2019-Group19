@@ -50,6 +50,14 @@ We use another image bank.
 	background.tile(5, 5, 14)
 	background.tile(6, 5, 0)
 	background.tile(7, 5, 0)  # blank white
+	
+	text = []
+
+        text1 = stage.Text(width=29, height=14, font=None,
+                           palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
+        text1.move(20, 10)
+        text1.text("MT Game Studios")
+        text.append(text1)
 
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
