@@ -30,7 +30,7 @@ sprites can be placed in front of the background. xxx
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
-.. figure:: ./images/plane_selection.GIF
+.. figure:: ./images/select_plane.GIF
    :width: 480 px
    :alt: Plane Selection
    :align: center
