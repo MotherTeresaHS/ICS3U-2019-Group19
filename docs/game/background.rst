@@ -20,9 +20,32 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
    :alt: White background
    :align: center
 
-   Background on PyBadge
+  White Background on PyBadge
 
 This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
+
+.. code-block:: python
+	:linenos:
+	
+	for y_location in range(8):
+            for x_location in range(16):
+                if y_location == 1:
+                    tile_picked = random.randint(1, 3)
+                else:
+                    tile_picked = random.randint(1, 1)
+                background.tile(x_location, y_location, tile_picked)
+
+
+As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
+
+.. figure:: ./images/game_background.jpg
+   :width: 480 px
+   :alt: Game background
+   :align: center
+
+   Game Background on PyBadge
+
+This codes replace the background of pybadge with another 16x16 image. pybadge contains 16 images on the x-axis and 8 image on the y-axis in the image bank. It fills that background with a for loop. When the second image is filled on the y-axis, it randomly fills the second to fourth images in the image bank.
 
 
 .. code-block:: python
@@ -36,24 +59,26 @@ This code will not work. The code above has a lot to do. Here is a better versio
 	
 	import ugame
 	import stage
+	import random
 
 	  
 	def main():
 	    # this function display background of pybadge
 	    image_bank_1 = stage.Bank.from_bmp16("avoid_or_shoot.bmp")
-
    	    background = stage.Grid(image_bank_1, 10, 8)
+	    
+	    for y_location in range(8):
+                for x_location in range(16):
+                    if y_location == 1:
+                        tile_picked = random.randint(1, 3)
+                    else:
+                        tile_picked = random.randint(1, 1)
+                    background.tile(x_location, y_location, tile_picked)
 
-	    # create a stage for the background to show up on
-	    #   and set the frame rate to 60fps
 	    game = stage.Stage(ugame.display, 60)
-	    # set the layers, items show up in order
 	    game.layers = [background]
-	    # render the background and inital location of sprite list
-	    # most likely you will only render background once per scene
 	    game.render_block()
 
-	    # repeat forever, game loop
 	    while True:
 	    	pass
 
