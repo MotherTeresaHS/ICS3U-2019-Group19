@@ -16,9 +16,9 @@ Avoid or Shoot needs a background. This code is puts the first image in the back
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
 .. figure:: ./images/white_background.jpg
-   :width: 480 px
-   :alt: White background
-   :align: center
+    :width: 480 px
+    :alt: White background
+    :align: center
 
   White Background on PyBadge
 
