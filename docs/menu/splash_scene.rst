@@ -8,7 +8,7 @@ in this case the first image of image bank is white colour image. Of course when
 
 We use another image bank. 
 
-.. figure:: https://raw.githubusercontent.com/jaeyoon-lee2/ICS3U-2019-Group19/master/avoid_or_shoot.bmp
+.. figure:: https://raw.githubusercontent.com/jaeyoon-lee2/ICS3U-2019-Group19/master/mt_game_studio.bmp
     :height: 256 px
     :align: center
     :alt: Image Bank for Avoid or Shoot
