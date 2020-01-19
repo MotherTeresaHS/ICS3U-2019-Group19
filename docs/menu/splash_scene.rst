@@ -13,7 +13,7 @@ We use another image bank
    :alt: mt_game_studio.bmp
    :align: center
 
-  MT Game studio
+  MT Game studio Image Bank
   
 .. code-block:: python
 	:linenos:
