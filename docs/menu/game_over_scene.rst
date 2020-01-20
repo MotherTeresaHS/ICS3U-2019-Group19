@@ -38,4 +38,4 @@ You get the score of game and cause.
             text.append(text3)
 
 
-The score and cause put on the screen.
+The score and cause put on the screen. `game_over.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/menu/game_over.py>`_ This is the full codes of game over scene.
