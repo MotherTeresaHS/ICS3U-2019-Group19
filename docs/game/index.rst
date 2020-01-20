@@ -14,3 +14,4 @@ X
    Plane Selection <selection>
    Show Airplane <airplane>
    Move Airplane <move_airplane>
+   Enemy <enemy>
