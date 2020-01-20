@@ -18,10 +18,10 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
 .. figure:: ./images/show_plane.jpg
    :width: 480 px
-   :alt: White background
+   :alt: Plane on Pybadge
    :align: center
 
-   Background on PyBadg
+   Plane on PyBadg
 
 This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
 

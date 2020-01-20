@@ -12,4 +12,5 @@ X
 
    Splash Scene <splash_scene>
    Start Scene <start_scene>
+   Help Scene <help_scene>
    Game Over Scene <game_over_scene>
