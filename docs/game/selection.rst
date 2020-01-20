@@ -8,24 +8,41 @@ sprites can be placed in front of the background. xxx
 .. code-block:: python
         :linenos:
 
-        While True:
+        while True:
             keys = ugame.buttons.get_pressed()
-            
-            if keys & ugame.K_RIGHT:
-                plane.move(plane.x + 1, plane.y)
+
+            if keys & ugame.K_UP != 0:
+                if select_box1.y != constants.SCREEN_Y / 4:
+                    select_box1.move(int(select_box1.x),
+                                     int(constants.SCREEN_Y / 4))
+                else:
+                    pass
                 pass
-            if keys & ugame.K_LEFT:
-                plane.move(plane.x - 1, plane.y)
+            if keys & ugame.K_DOWN != 0:
+                if select_box1.y != (constants.SCREEN_Y * 3 / 4 -
+                                     constants.SPRITE_SIZE):
+                    select_box1.move(int(select_box1.x),
+                                     int(constants.SCREEN_Y * 3 / 4 -
+                                         constants.SPRITE_SIZE))
+                else:
+                    pass
                 pass
-            if keys & ugame.K_UP:
-                plane.move(plane.x, plane.y - 1)
+            if keys & ugame.K_LEFT != 0:
+                if select_box1.x != constants.SCREEN_X / 4:
+                    select_box1.move(int(constants.SCREEN_X / 4),
+                                     int(select_box1.y))
+                else:
+                    pass
                 pass
-            if keys & ugame.K_DOWN:
-                plane.move(plane.x, plane.y + 1)
+            if keys & ugame.K_RIGHT != 0:
+                if select_box1.x != (constants.SCREEN_X * 3 / 4 -
+                                     constants.SPRITE_SIZE):
+                    select_box1.move(int(constants.SCREEN_X * 3 / 4 -
+                                         constants.SPRITE_SIZE),
+                                     int(select_box1.y))
+                else:
+                    pass
                 pass
-            
-            game.render_sprites(sprites)
-            game.tick()
 
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
