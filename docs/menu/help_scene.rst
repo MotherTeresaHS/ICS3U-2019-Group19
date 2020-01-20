@@ -3,7 +3,7 @@
 Help Scene
 ============
 
-Add some information about this game. Add text with this `help_text.py <./help_text.py>`_. Then create a box to control the sound.
+Add some information about this game. Add text with this `help_text.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/menu/help_text.py>`_. Then create a box to control the sound.
 
 .. code-block:: python
         :linenos:
