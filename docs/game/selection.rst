@@ -45,6 +45,7 @@ sprites can be placed in front of the background. xxx
                 pass
 
 
+THere is full codes of selection scene. => `selection_scene.py <./selection_scene.py>`_ <=
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
 .. figure:: ./images/select_plane.GIF
