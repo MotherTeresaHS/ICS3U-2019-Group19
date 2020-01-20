@@ -3,7 +3,7 @@
 Help Scene
 ============
 
-Add some information about this game. Add text with this `help_text.py <https://learn.adafruit.com/adafruit-wave-shield-audio-shield-for-arduino/convert-files>`_. Then create a box to control the sound.
+Add some information about this game. Add text with this `help_text.py <./help_text.py>`_. Then create a box to control the sound.
 
 .. code-block:: python
         :linenos:
