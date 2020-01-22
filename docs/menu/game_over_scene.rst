@@ -39,3 +39,12 @@ You get the score of game and cause from the game.
 
 
 The score put on the screen. And use if statement to indicate the cause. `game_over.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/menu/game_over.py>`_ This is the full codes of game over scene.
+
+As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
+
+.. figure:: ./images/game_over.jpg
+    :height: 480 px
+    :align: center
+    :alt: Game Over
+
+    Game Over Scene
