@@ -38,4 +38,3 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
    Moving sprite on background
 
 Now, you can move a plane on your PyBadge.
-    
