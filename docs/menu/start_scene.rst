@@ -3,8 +3,7 @@
 Start Scene
 ===========
 
-Avoid or Shoot needs a background. This code is puts the first image in the background. The first image is 16 x 16 px image at the top. 
-in this case the first image of image bank is white colour image. Of course when you save the file, save it as :file:`code.py` file:
+Avoid or Shoot needs a logo. So I make th logo of this game. This image is the same image shown on the left.
 
 We use another image bank. 
 
@@ -56,6 +55,8 @@ We use another image bank.
         text.append(text2)
 
 
+This codes is used to create a large image by concatenatiing the images in the image bank one by one. It was previously covered in Splash Scene.
+
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
 .. figure:: ./images/game_title.jpg
@@ -65,7 +66,7 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
    Game Title on PyBadg
 
-This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
+Also we need to go to other scene with buttons.
 
 .. code-block:: python
 	:linenos:
@@ -81,4 +82,4 @@ This code will not work. The code above has a lot to do. Here is a better versio
             game.tick()
 
 
-Switch scenes with start and select
+That makes to switch scenes to selection and help scene with start and select button.
