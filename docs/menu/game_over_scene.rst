@@ -3,7 +3,7 @@
 Game Over Scene
 ===============
 
-T
+When the game is over, the screen switches to here. This scene shows some information.
 
 .. code-block:: python
         :linenos:
@@ -11,7 +11,7 @@ T
         def game_over_scene(final_score, cause):
 
 
-You get the score of game and cause.
+You get the score of game and cause from the game.
 
 .. code-block:: python
         :linenos:
@@ -38,4 +38,4 @@ You get the score of game and cause.
             text.append(text3)
 
 
-The score and cause put on the screen. `game_over.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/menu/game_over.py>`_ This is the full codes of game over scene.
+The score put on the screen. And use if statement to indicate the cause. `game_over.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/menu/game_over.py>`_ This is the full codes of game over scene.
