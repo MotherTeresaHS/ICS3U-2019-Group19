@@ -67,4 +67,5 @@ This code will not work. There is a lot more to this code. Below is the full ver
       if __name__ == "__main__":
           main()
 
+
 Now, you can get a sprite to show up in front of your background on your PyBadge.  
