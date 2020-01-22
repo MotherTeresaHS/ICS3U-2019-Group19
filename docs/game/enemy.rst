@@ -40,3 +40,12 @@ Create a function to show enemy. This function represents randomly set y values 
 
 
 Make this code is while loop. Then you can see the enemy moving. Also make the code that moves a missile like that.   
+
+As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
+
+.. figure:: ./images/move_enemy.GIF
+   :width: 480 px
+   :alt: Move enemy
+   :align: center
+
+   Moving enemy on Pybadge
