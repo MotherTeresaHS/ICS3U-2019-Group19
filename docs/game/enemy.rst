@@ -1,44 +1,42 @@
 .. _enemy:
 
-ENEMIES
+Enemy
 ==========
 
-sprites can be placed in front of the background. xxx
+The game requires the appearance of enemies and the loading missiles.
 
 .. code-block:: python
         :linenos:
 
-        While True:
-            keys = ugame.buttons.get_pressed()
-            
-            if keys & ugame.K_RIGHT:
-                plane.move(plane.x + 1, plane.y)
-                pass
-            if keys & ugame.K_LEFT:
-                plane.move(plane.x - 1, plane.y)
-                pass
-            if keys & ugame.K_UP:
-                plane.move(plane.x, plane.y - 1)
-                pass
-            if keys & ugame.K_DOWN:
-                plane.move(plane.x, plane.y + 1)
-                pass
-            
-            game.render_sprites(sprites)
-            game.tick()
+        def show_flying():
+            enemy_picked = random.randint(0, 1)
+            if enemy_picked == 0:
+                if bird.y < 0:
+                    bird.move(200, random.randint(0 + constants.SPRITE_SIZE,
+                                                  constants.SCREEN_Y -
+                                                  constants.SPRITE_SIZE))
+            else:
+                if enemy.y < 0:
+                    enemy.move(200, random.randint(0 + constants.SPRITE_SIZE,
+                                                   constants.SCREEN_Y -
+                                                   constants.SPRITE_SIZE))
 
 
-As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
+Create a function to show enemy. This function represents randomly set y values for the enemy. Also create a function that represents a missile like this.
 
-.. figure:: ./images/move_plane.GIF
-   :width: 480 px
-   :alt: Move plane
-   :align: center
+.. code-block:: python
+        :linenos:
+        
+        if bird.y > 0:
+            bird.move(bird.x - 2, bird.y)
+            if bird.x < constants.OFF_SCREEN_X:
+                bird.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                show_flying()
+        elif enemy.y > 0:
+            enemy.move(enemy.x - 2, enemy.y)
+            if enemy.x < constants.OFF_SCREEN_X:
+                enemy.move(constants.OFF_SCREEN_X, constants.OFF_SCREEN_Y)
+                show_flying()
 
-   Moving sprite on background
 
-This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
-
-
-Now, you can move a plane in front of your background on your PyBadge.
-    
+Make this code is while loop. Then you can see the enemy moving. Also make the code that moves a missile like that.   
