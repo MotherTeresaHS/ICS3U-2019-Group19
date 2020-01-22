@@ -3,7 +3,7 @@
 Move Airplane
 ==========
 
-sprites can be placed in front of the background. xxx
+sprites can move on the screen. you make some if statements in the while loop. It makes the plane to move. In pybadge, the y value increases as it go down, so you need to subtract the y value from the Up button.
 
 .. code-block:: python
         :linenos:
@@ -37,8 +37,5 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
    Moving sprite on background
 
-This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
-
-
-Now, you can move a plane in front of your background on your PyBadge.
+Now, you can move a plane on your PyBadge.
     
