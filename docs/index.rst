@@ -5,7 +5,8 @@ Home
 .. raw:: html
 
   <div style="text-align: center; margin-bottom: 2em;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/F9xz2KK3IXg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/F9xz2KK3IXg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
   </div>
 
 In this project we will be making an old school style video game for the `Adafruit PyBadge <https://www.adafruit.com/product/4200>`_. We will be using `CircuitPython <https://circuitpython.org>`_ and the `stage library <https://learn.adafruit.com/circuitpython-stage-game-library>`_ to create a `Space Invaders <https://en.wikipedia.org/wiki/Space_Invaders>`_ like game. The stage library makes it easy to make classic video games, with helper libraries for sound, sprites and collision detection. The game will also work on other variants of PyBadge hardware, like the `PyGamer <https://www.adafruit.com/product/4242>`_ and the `EdgeBadge <https://www.adafruit.com/product/4400>`_. The full completed game code with all the assets can be found `here <https://github.com/MotherTeresaHS/ICS3U-2019-Group0>`_.
