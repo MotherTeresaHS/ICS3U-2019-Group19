@@ -4,7 +4,7 @@
 Game
 ****
 
-X
+This section describes things realted to gameplay. Go through the post below.
 
 .. toctree::
    :maxdepth: 1
