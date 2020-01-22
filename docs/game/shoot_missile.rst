@@ -63,11 +63,11 @@ Then, missile move from plane to right side. And if the missile go off the scree
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
-.. figure:: ./images/move_plane.GIF
+.. figure:: ./images/shoot_missile.GIF
    :width: 480 px
-   :alt: Move plane
+   :alt: Shoot missile
    :align: center
 
-   Moving sprite on background
+   Shooting missile
 
 Now, you can shoot the missiles on your PyBadge.
