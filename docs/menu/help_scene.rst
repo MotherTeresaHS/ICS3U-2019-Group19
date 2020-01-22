@@ -51,6 +51,8 @@ The above code will display a sound control box on the screen.
                 check_box.move(130, 60)
 
 
+I made it only work when the button was pressed and the variable called volume is added by 1 and divided into odd and even numbers. So if the volume is odd number, it is mute.
+
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
 .. figure:: ./images/mute_sound.GIF
@@ -59,4 +61,5 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
    :align: center
 
    Mute Button
-You can press B button to mute sound.
+
+Now, you can mute the sound to press B button.
