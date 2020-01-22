@@ -3,7 +3,7 @@
 Plane Selection
 ==========
 
-sprites can be placed in front of the background. xxx
+I created the selection scene that can choose the plane by user. Planes are placed in quadrant on the screen. And the select box has to move exactly on the plane's position.
 
 .. code-block:: python
         :linenos:
@@ -45,7 +45,9 @@ sprites can be placed in front of the background. xxx
                 pass
 
 
-THere is full codes of selection scene. => `selection_scene.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/game/selection_scene.py>`_ <=
+There is full codes of selection scene. => `selection_scene.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/game/selection_scene.py>`_ <=
+
+In the codes, I send airplane information to the game.
 
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
@@ -56,6 +58,6 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
    Plane Selection
 
-Now, you can move a plane in front of your background on your PyBadge.
+Now, you can choose plane on your PyBadge.
     
 
