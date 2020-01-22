@@ -15,3 +15,4 @@ This section describes things realted to gameplay. Go through the post below.
    Show Airplane <airplane>
    Move Airplane <move_airplane>
    Enemy <enemy>
+   Shoot the Missile <shoot_missile>
