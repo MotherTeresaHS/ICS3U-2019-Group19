@@ -3,7 +3,7 @@
 Show Airplane
 ==========
 
-sprites can be placed in front of the background. xxx
+sprites can be placed in front of the background. Create a list called sprites and put the ninth image in the image bank.
 
 .. code-block:: python
         :linenos:
@@ -23,7 +23,7 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
    Plane on PyBadg
 
-This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
+This code will not work. There is a lot more to this code. Below is the full version of the code above. I imported stage and ugame. Also I add the list of sprites in layers and in the game rendering of while loop function.
 
 .. code-block:: python
       :linenos:
@@ -32,7 +32,7 @@ This code will not work. The code above has a lot to do. Here is a better versio
 
       # Created by : Jay Lee
       # Created on : Jan 2020
-      # This program display background of pybadge
+      # This program display sprite
 
       import ugame
       import stage
@@ -67,5 +67,5 @@ This code will not work. The code above has a lot to do. Here is a better versio
       if __name__ == "__main__":
           main()
 
-Now, you can get a sprite to show up in front of your background on your PyBadge.
-    
+
+Now, you can get a sprite to show up in front of your background on your PyBadge.  

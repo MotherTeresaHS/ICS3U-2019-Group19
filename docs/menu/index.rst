@@ -4,7 +4,7 @@
 Menu System
 ***********
 
-X
+This section describes things except gameplay. Go through the post below.
 
 .. toctree::
    :maxdepth: 1

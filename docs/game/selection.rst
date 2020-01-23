@@ -3,7 +3,7 @@
 Plane Selection
 ==========
 
-sprites can be placed in front of the background. xxx
+I created the selection scene that can choose the plane by user. Planes are placed in quadrant on the screen. And the select box has to move exactly on the plane's position.
 
 .. code-block:: python
         :linenos:
@@ -45,6 +45,10 @@ sprites can be placed in front of the background. xxx
                 pass
 
 
+There is full codes of selection scene. => `selection_scene.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/docs/game/selection_scene.py>`_ <=
+
+In the codes, I send airplane information to the game.
+
 As soon as you save the file onto the PyBadge, the screen should flash and you should see something like:
 
 .. figure:: ./images/select_plane.GIF
@@ -54,9 +58,6 @@ As soon as you save the file onto the PyBadge, the screen should flash and you s
 
    Plane Selection
 
-This code will not work. The code above has a lot to do. Here is a better version that shows the background. You can see that you called the :py:func:`main()` function. This is common in python code but usually not visible in CircuitPython. I am including it because by breaking the code into different functions to match different scenes, eventually will be really helpful.
-
-
-Now, you can move a plane in front of your background on your PyBadge.
+Now, you can choose plane on your PyBadge.
     
 

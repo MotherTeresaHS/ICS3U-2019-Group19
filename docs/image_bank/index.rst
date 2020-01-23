@@ -21,6 +21,10 @@ If you do not want to get into creating your own assets, other people have alrea
 - `boom sound <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/Bomb.wav>`_
 - `bird sound <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/birds.wav>`_
 
+- `constants.py <https://github.com/jaeyoon-lee2/ICS3U-2019-Group19/blob/master/constants.py>`_
+
+This is constants file to be used in this game.
+
 Please download the assets and place them on the PyBadge, in the root directory. Your previoud "Hello, World!" program should restart and run again each time you load a new file onto the PyBadge, hopefully with no errors once more.
 
 Assets from other people can be found `here <https://github.com/MotherTeresaHS/ICS3U-2019-Group19/tree/master/docs/image_bank>`_.

@@ -769,7 +769,7 @@ def game_over_scene(final_score, cause):
     text4 = stage.Text(width=29, height=14, font=None,
                        palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text4.move(40, 100)
-    text4.text("MENU:[A]")
+    text4.text("MENU:[B]")
     text.append(text4)
 
     game = stage.Stage(ugame.display, constants.FPS)
@@ -784,7 +784,7 @@ def game_over_scene(final_score, cause):
         # get user input
         keys = ugame.buttons.get_pressed()
 
-        if keys & ugame.K_X != 0:
+        if keys & ugame.K_O != 0:
             score = 0
             number_of_missiles = 10
             main_menu_scene()
